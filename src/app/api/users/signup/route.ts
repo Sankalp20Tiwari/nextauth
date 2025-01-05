@@ -5,6 +5,8 @@ import bcryptjs from "bcryptjs"
 import { sendEmail } from "@/helpers/mailer";
 connect()
 
+
+
 export async function POST(request:NextRequest) {
     try{
        const reqBody = await request.json();
