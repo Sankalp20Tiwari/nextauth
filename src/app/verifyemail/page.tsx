@@ -3,6 +3,7 @@ import React, { use, useEffect, useState } from 'react'
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { Meteors } from "@/components/ui/meteors";
 
 function VerifyEmailPage() {
 
@@ -43,7 +44,7 @@ function VerifyEmailPage() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
 
             <h1 className="text-4xl">Verify Email</h1>
-            <h2 className="p-2 mt-5 bg-orange-500 text-black">{token ? `${token}` : "no token"}</h2>
+            <h2 className="p-2 mt-5 bg-gray-500 text-black">{token ? `${token}` : "no token"}</h2>
 
             {verified && (
                 <div>
@@ -59,6 +60,7 @@ function VerifyEmailPage() {
                     
                 </div>
             )}
+             <Meteors number={50} />
         </div>
   )
 }

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Meteors } from "@/components/ui/meteors";
 
 function SignupPage() {
 
@@ -81,6 +82,7 @@ function SignupPage() {
         className='p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600'
       >{buttonDisabled ? "No signup" : "Signup"}</button>
       <Link href="/login">Visit login page</Link>
+      <Meteors number={50} />
     </div>
   )
 }
