@@ -1,6 +1,6 @@
 
 import { Meteors } from "@/components/ui/meteors";
-async function page({ params }: { params: { id: string } }) {
+async function page({ params }: any) {
     const { id } =  params; // You can destructure `params` here
 
   return (

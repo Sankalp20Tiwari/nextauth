@@ -1,11 +1,10 @@
 import {connect} from "@/dbConfig/dbConfig";
-import User from "@/models/userModel";
-import {NextRequest , NextResponse} from 'next/server';
+
+import { NextResponse} from 'next/server';
 
 connect()
 
-
-export async function GET(request:NextRequest) {
+export async function GET() {
     try{
         const response = NextResponse.json({message:"Logout success",sucess:true},{status:200})
 
