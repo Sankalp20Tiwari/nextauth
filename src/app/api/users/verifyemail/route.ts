@@ -7,8 +7,11 @@ connect()
 export async function POST(request:NextRequest) {
     try{
         const reqBody = await request.json();
-        const {token} = reqBody;
-        console.log(token);
+        let {token} = reqBody;
+        console.log("Encoded token received:", token); // Log the encoded token
+
+        token = decodeURIComponent(token);
+        console.log("Decoded token:", token); // Log the decoded token
 
         const user = await User.findOne({verifyToken:token,verifyTokenExpiry:{$gt:Date.now()}})
 
