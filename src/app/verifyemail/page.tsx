@@ -13,11 +13,14 @@ export default function VerifyEmailPage() {
 
     const verifyUserEmail = async () => {
         try {
-            await axios.post('/api/users/verifyemail', {token})
+           const response =  await axios.post('/api/users/verifyemail', {token})
+            console.log('API Response:', response.data);
             setVerified(true);
         } catch (error:any) {
             setError(true);
-            console.log(error.reponse.data);
+            console.error('Error verifying email:', error); // Log full error
+            const errorMessage = error.response?.data?.error || 'An unknown error occurred';
+            console.log(errorMessage); // Safely log the error message
             
         }
 
@@ -34,6 +37,10 @@ export default function VerifyEmailPage() {
             verifyUserEmail();
         }
     }, [token]);
+
+    useEffect(() => {
+        console.log('Verified state updated:', verified);
+    }, [verified]);
 
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
