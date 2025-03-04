@@ -1,32 +1,27 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
- 
-// This function can be marked `async` if using `await` inside
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
 export function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname
-  
-  const isPublicPath = path === '/login' || path === '/signup' || path === '/verifyemail' 
+  const path = request.nextUrl.pathname;
+  const token = request.cookies.get('token')?.value || '';
 
-  const token = request.cookies.get('token')?.value || ''
-  
-  if (isPublicPath && token) {
-    return NextResponse.redirect(new URL('/', request.url))
+  const isAuthPage = path === '/login' || path === '/signup' || path === '/verifyemail';
+  const isProtectedPage = path === '/profile'; // Add more protected routes here
+
+  // If user is authenticated and trying to access auth pages, redirect to home
+  if (isAuthPage && token) {
+    return NextResponse.redirect(new URL('/profile', request.url));
   }
 
-  if (!isPublicPath && !token) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  // If user is not authenticated and trying to access protected pages, redirect to landing page
+  if (isProtectedPage && !token) {
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
- 
+  return NextResponse.next();
 }
- 
-// See "Matching Paths" below to learn more
+
 export const config = {
-  matcher: [
-    '/',
-    '/login',
-    '/signup',
-    '/verifyemail',
-    '/profile'
-  ]
-}
+  matcher: ['/', '/login', '/signup', '/verifyemail', '/profile'],
+};
+
