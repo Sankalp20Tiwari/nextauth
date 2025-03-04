@@ -2,6 +2,10 @@
 
 A secure and scalable authentication system built using Next.js, TypeScript, and NextAuth.js. It supports user authentication with features such as signup, login, password reset, email verification, and profile management.
 
+## 🖼️  Preview
+
+![ReelsPro Landing Page](public/landing-page.png)
+
 ## 🚀 Features
 
 ✅ Secure authentication with NextAuth.js  
@@ -11,6 +15,10 @@ A secure and scalable authentication system built using Next.js, TypeScript, and
 ✅ API-based authentication handling  
 ✅ Fully typed with TypeScript  
 ✅ Modular and scalable project structure  
+
+## 🔗 Live Demo
+
+Check out the live version of ReelsPro here: [Live Site](https://nextauth-eta-flame.vercel.app/login)
 
 ## 📂 Folder Structure
 
